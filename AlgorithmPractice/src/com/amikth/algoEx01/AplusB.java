@@ -1,7 +1,9 @@
 package com.amikth.algoEx01;
 
 import java.util.Scanner;
-
+/*
+ * test
+ * */
 public class AplusB {
 	
 	public static void main(String[] args) {
