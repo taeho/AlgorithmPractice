@@ -63,14 +63,14 @@ public class TestStack {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		sc.nextLine();	// 정수 뒤 \n이 있어서 필요합니다.
-		Stack<Integer> stack = new Stack<Integer>();
+		Stack stack = new Stack();
 		for(int k=0; k <n; k++) {
 			String line = sc.nextLine();
 			String[] s = line.split(" ");
 			String cmd = s[0];
 			if(cmd.equals("push")){
 				int num = Integer.parseInt(s[1]);
-				stack.push(num);
+				stack.push(new Integer(num));
 			} else if(cmd.equals("top")) {
 				if(stack.empty()) {
 					System.out.println("-1");
