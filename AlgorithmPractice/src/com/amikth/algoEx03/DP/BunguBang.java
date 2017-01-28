@@ -77,6 +77,7 @@ import java.util.Scanner;
  * 18
  * 
  * */
+
 public class BunguBang {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
