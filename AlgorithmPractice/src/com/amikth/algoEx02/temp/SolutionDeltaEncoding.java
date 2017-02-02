@@ -72,6 +72,7 @@ public class SolutionDeltaEncoding {
 		for(int k=0; k < res1.size() ; k++) {
 			System.out.print( " " + res1.get(k));	
 		}
+		
 		System.out.println();
 		for(int i=0; i < res1.size(); i++) {
 			if(i==0) {
