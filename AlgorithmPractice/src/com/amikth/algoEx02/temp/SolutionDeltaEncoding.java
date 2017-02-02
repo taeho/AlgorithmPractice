@@ -1,7 +1,9 @@
 package com.amikth.algoEx02.temp;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.StringTokenizer;
 /*
  * Given a list of numbers as input, e.g. :
 
@@ -23,47 +25,50 @@ Following the same example above, the final output would be:
 
  * */
 public class SolutionDeltaEncoding {
-
-	public static void main(String[] args ) { 
-				
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String arrBuffer = sc.nextLine();
+		
+		LinkedList list = new LinkedList();  
+		// 분리 토큰은 space로 하자 
+	    StringTokenizer token = new StringTokenizer(arrBuffer, " ");  
+	      
+	    String str_value;  
+	      
+	    while (token.hasMoreTokens()) {  
+	        str_value = token.nextToken();  
+	        list.add(str_value);  
+	    }
+	    DeltaEncoding(list);
+//	    System.out.println("================");
+//	    for(int i=0; i<list.size(); i++) {
+//	    	System.out.print(list.get(i) + " ");
+//	    }
+		//////////////////////////////////////////////////////////////////////////		
+		
+ 
+	}
+	
+	public static void DeltaEncoding(LinkedList arr) {
+		// 체크 용 토큰 
 		String escToken = "-128";
-//		Scanner sc = new Scanner(System.in);
 		
-//		int[] arb = new int[127];
-//		//int input = sc.nextInt();
-//		for(int i=0; i < arb.length; i++) {
-//			arb[i] = sc.nextInt();
-//			if(sc.equals("\n")  ) {
-//				break;
-//			}
-//		}
-		
-//		Stack temp1 = new Stack();
-//		
-//		for(int i=0; i < arb.length; i++) {
-//			if(i==0) {
-//				temp1.push(arb);
-//			} else {
-//				temp1.push(arb[i] - arb[i-1]);				
-//			}			
-//		}
-//		System.out.println("res1 ");
-//		for(int k=0; k < temp1.size() ; k++) {
-//			System.out.print( " " + temp1.get(k));	
-//		}
-		
-		String[] arr = {"25626", "25757", "24367","24267", "16", "100", "2" , "7277" };
+		// 스택선언 
 		Stack res1 = new Stack();
 		Stack res2 = new Stack();
 		
-		for(int i=0; i < arr.length; i++) {
+		for(int i=0; i < arr.size(); i++) {
 			if(i==0) {
-				res1.push(arr[i]);
+				res1.push(arr.get(i));
 			} else {
-				res1.push(new Integer(Integer.parseInt(arr[i]) - Integer.parseInt(arr[i-1])));				
+				int cp1 = Integer.parseInt(String.valueOf(arr.get(i)));
+				int cp2 = Integer.parseInt(String.valueOf(arr.get(i-1)));
+				int rea = cp1-cp2;
+				// res1.push(rea); // jdk7
+				res1.push(String.valueOf(rea)); // jdk8
 			}			
 		}
-		System.out.println("res1 ");
+		//System.out.println("res1 ");
 		for(int k=0; k < res1.size() ; k++) {
 			System.out.print( " " + res1.get(k));	
 		}
@@ -90,7 +95,5 @@ public class SolutionDeltaEncoding {
 		for(int k=0; k < res2.size() ; k++) {
 			System.out.print( res2.get(k) + " ");	
 		}
-		
-		
 	}
-}
+} 
